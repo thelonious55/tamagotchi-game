@@ -23,39 +23,51 @@ const sleepBtn = document.querySelector('#sleep-btn')
 const playBtn = document.querySelector('#play-btn')
 
 let currentDay = document.querySelector('#current-day')
+
+const startBtn = document.querySelector('#start-btn')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc)
 sleepBtn.addEventListener('click', sleepInc)
 playBtn.addEventListener('click', activityInc)
-
+startBtn.addEventListener('click', initialize)
 
 /*----- functions -----*/
 
+//Start game function
 
-//Decrease stats every few seconds
-const hungerDec = setInterval(function () {
-    pet.hunger -= 1
-    if (pet.hunger === 0) {
-        clearInterval(hungerDec)
-    }
-    renderStats()
-}, 3000)
+function initialize() {
+    const hungerDec = setInterval(function () {
+        pet.hunger -= 1
+        if (pet.hunger === 0) {
+            clearInterval(hungerDec)
+        }
+        renderStats()
+    }, 3000)
+    
+    const sleepDec = setInterval(function () {
+        pet.sleep -= 1
+        if (pet.sleep === 0) {
+            clearInterval(sleepDec)
+        }
+        renderStats()
+    }, 10000)
+    
+    const activityDec = setInterval(function () {
+        pet.activity -= 1
+        if (pet.activity === 0) {
+            clearInterval(activityDec)
+        }
+        renderStats()
+    }, 7000)
 
-const sleepDec = setInterval(function () {
-    pet.sleep -= 1
-    if (pet.sleep === 0) {
-        clearInterval(sleepDec)
-    }
+    const dayCounter = setInterval(function () {
+        dayNum += 1
+        renderDay()
+    }, 60000)
+    
     renderStats()
-}, 10000)
-
-const activityDec = setInterval(function () {
-    pet.activity -= 1
-    if (pet.activity === 0) {
-        clearInterval(activityDec)
-    }
-    renderStats()
-}, 7000)
+    renderDay()
+}
 
 
 //Increase stats
@@ -84,6 +96,8 @@ function activityInc() {
     }
 }
 
+//Render functions
+
 function renderStats() {
     hungerStat.innerHTML = `hunger ${pet.hunger}%`
     sleepStat.innerHTML = `sleep ${pet.sleep}%`
@@ -94,7 +108,8 @@ function renderDay() {
     currentDay.innerHTML = `Day ${dayNum}`
 }
 
-const dayCounter = setInterval(function () {
-    dayNum += 1
-    renderDay()
-}, 60000)
+if (pet.activity === 0 || pet.hunger === 0 || pet.sleep === 0) {
+    //placeholder lose message
+} else if (dayNum === 15) {
+    //placeholder win message
+}
