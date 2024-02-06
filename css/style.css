@@ -9,6 +9,7 @@ body {
     padding: 12px;
     background-color: #b800ff;
     color: white;
+    font-family: 'ArcadeClassic', sans-serif;
 }
 
 #sleep-btn {
@@ -16,6 +17,7 @@ body {
     padding: 12px;
     background-color: #b800ff;
     color: white;
+    font-family: 'ArcadeClassic', sans-serif;
 }
 
 #play-btn {
@@ -23,6 +25,7 @@ body {
     padding: 12px;
     background-color: #b800ff;
     color: white;
+    font-family: 'ArcadeClassic', sans-serif;
 }
 
 h1 {
@@ -31,4 +34,34 @@ h1 {
     background-image: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(184,0,255,1) 0%, rgba(0,212,255,1) 100%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+input {
+    font-family: 'ArcadeClassic', sans-serif;
+}
+
+#start-btn {
+    border-radius: 12px;
+    padding: 12px;
+    background-color: #b800ff;
+    color: white;
+    font-family: 'ArcadeClassic', sans-serif;
+}
+
+#reset-btn {
+    border-radius: 12px;
+    padding: 12px;
+    background-color: #b800ff;
+    color: white;
+    font-family: 'ArcadeClassic', sans-serif;
+}
+
+#name {
+    font-size: 50px;
+    font-family: 'ArcadeClassic', sans-serif;
+    color: #00d4ff;
+}
+
+h3 {
+    font-family: 'ArcadeClassic', sans-serif;
 }

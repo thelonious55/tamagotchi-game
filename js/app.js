@@ -3,7 +3,6 @@ const pet = {
     hunger: 100,
     sleep: 100,
     activity: 100,
-    name: document.querySelector('input')
 }
 /*----- app's state (variables) -----*/
 let hungerDec;
@@ -26,7 +25,11 @@ let currentDay = document.querySelector('#current-day');
 const startBtn = document.querySelector('#start-btn');
 const resetBtn = document.querySelector('#reset-btn');
 let resultMsg = document.querySelector('#result-msg');
+
+//cached empty element
 let nameTag = document.querySelector('#name')
+
+let inputBox = document.querySelector('input')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc);
 sleepBtn.addEventListener('click', sleepInc);
@@ -76,9 +79,15 @@ function initialize() {
 
     renderStats()
     renderDay()
-    nameTag.innerHTML = pet.name.value
-    startBtn.style.display = 'none'
+    
+    nameTag.innerHTML = document.querySelector('input').value
     document.querySelector('input').value = ''
+
+    startBtn.style.display = 'none'
+    inputBox.style.display = 'none'
+    feedBtn.style.display = ''
+    sleepBtn.style.display = ''
+    playBtn.style.display = ''
 }
 
 
@@ -133,7 +142,14 @@ function resetGame() {
     renderStats()
     resultMsg.innerHTML = ''
     startBtn.style.display = ''
+    inputBox.style.display = ''
     nameTag.innerHTML = ''
+    feedBtn.style.display = 'none'
+    sleepBtn.style.display = 'none'
+    playBtn.style.display = 'none'
+    hungerStat.innerHTML = ''
+    sleepStat.innerHTML = ''
+    activityStat.innerHTML = ''
 }
 
 
@@ -157,3 +173,7 @@ youWin = function () {
 
 
 //once everything is layed out, hide stats and action buttons until initialize
+
+feedBtn.style.display = 'none'
+sleepBtn.style.display = 'none'
+playBtn.style.display = 'none'
