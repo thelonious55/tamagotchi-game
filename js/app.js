@@ -3,7 +3,7 @@ const pet = {
     hunger: 100,
     sleep: 100,
     activity: 100,
-    name: document.querySelector('input')
+    name: document.querySelector('input').value
 }
 
 
@@ -18,6 +18,11 @@ let actionPoints;
 
 let dayNum = 1;
 
+let stopTimers;
+
+let youLose;
+
+let youWin;
 /*----- cached element references -----*/
 let hungerStat = document.querySelector('#hunger')
 let sleepStat = document.querySelector('#sleep')
@@ -32,6 +37,12 @@ let currentDay = document.querySelector('#current-day')
 const startBtn = document.querySelector('#start-btn')
 
 const resetBtn = document.querySelector('#reset-btn')
+
+let resultMsg = document.querySelector('#result-msg')
+
+let nameTag = document.querySelector('h1')
+
+let inputBox = document.querySelector('input')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc)
 sleepBtn.addEventListener('click', sleepInc)
@@ -46,34 +57,46 @@ function initialize() {
      hungerDec = setInterval(function () {
         pet.hunger -= 1
         if (pet.hunger === 0) {
-            clearInterval(hungerDec)
+            stopTimers()
+            youLose()
         }
         renderStats()
-    }, 3000)
+    }, 1500)
     
      sleepDec = setInterval(function () {
         pet.sleep -= 1
         if (pet.sleep === 0) {
-            clearInterval(sleepDec)
+            stopTimers()
+            youLose()
         }
         renderStats()
-    }, 10000)
+    }, 8000)
     
      activityDec = setInterval(function () {
         pet.activity -= 1
         if (pet.activity === 0) {
-            clearInterval(activityDec)
+            stopTimers()
+            youLose()
         }
         renderStats()
-    }, 7000)
+    }, 5000)
 
      dayCounter = setInterval(function () {
         dayNum += 1
         renderDay()
-    }, 60000)
+        if (dayNum === 15) {
+            stopTimers()
+            youWin()
+        }
+    }, 30000)
     
+    nameTag.innerHTML = `Tomogatchi - ${pet.name.value}`
+
     renderStats()
     renderDay()
+    
+    startBtn.style.display = 'none'
+
 }
 
 
@@ -119,30 +142,32 @@ function renderDay() {
 }
 
 function resetGame() {
-    clearInterval(hungerDec)
-    clearInterval(sleepDec)
-    clearInterval(activityDec)
+    stopTimers()
     dayNum = 1
     pet.activity = 100
     pet.sleep = 100
     pet.hunger = 100
+    renderDay()
+    renderStats()
+    resultMsg.innerHTML = ''
+    startBtn.style.display = ''
 }
 
 
+// stop timers on loss
+stopTimers = function () {
+    clearInterval(hungerDec)
+    clearInterval(activityDec)
+    clearInterval(sleepDec)
+    clearInterval(dayCounter)
+}
 
+//loss message
+youLose = function () {
+    resultMsg.innerHTML = "You Lose!"
+}
 
-
-
-//win lose conditions
-
-// if (pet.activity === 0 || pet.hunger === 0 || pet.sleep === 0) {
-//     clearInterval(hungerDec)
-//     clearInterval(sleepDec)
-//     clearInterval(activityDec)
-    //lose message
-// } else if (dayNum === 15) {
-//     clearInterval(hungerDec)
-//     clearInterval(sleepDec)
-//     clearInterval(activityDec)
-//     //win message
-// }
+//win message
+youWin = function () {
+    resultMsg.innerHTML = "You Win!"
+}
