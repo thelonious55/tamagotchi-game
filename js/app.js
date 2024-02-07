@@ -4,12 +4,14 @@ const pet = {
     sleep: 100,
     activity: 100,
 }
+
+
 /*----- app's state (variables) -----*/
 let hungerDec;
 let sleepDec;
 let activityDec;
 let dayCounter;
-let actionPoints; 
+// let actionPoints; 
 let dayNum = 1;
 let stopTimers;
 let youLose;
@@ -31,12 +33,15 @@ let nameTag = document.querySelector('#name')
 
 let inputBox = document.querySelector('input')
 const sprite = document.querySelector('#sprite')
+
+const dropdownMenu = document.querySelector('#dropdown-menu')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc);
 sleepBtn.addEventListener('click', sleepInc);
 playBtn.addEventListener('click', activityInc);
 startBtn.addEventListener('click', initialize);
 resetBtn.addEventListener('click', resetGame);
+dropdownMenu.addEventListener('change', dropdownSelection)
 /*----- functions -----*/
 
 //Start game function
@@ -49,7 +54,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 30)
+    }, 2000)
     
      sleepDec = setInterval(function () {
         pet.sleep -= 1
@@ -80,6 +85,7 @@ function initialize() {
 
     renderStats()
     renderDay()
+    dropdownSelection()
     
     nameTag.innerHTML = document.querySelector('input').value
     document.querySelector('input').value = ''
@@ -91,6 +97,7 @@ function initialize() {
     sleepBtn.style.display = ''
     playBtn.style.display = ''
     currentDay.style.display = ''
+    dropdownMenu.style.display = 'none'
 }
 
 
@@ -155,6 +162,7 @@ function resetGame() {
     hungerStat.innerHTML = ''
     sleepStat.innerHTML = ''
     activityStat.innerHTML = ''
+    dropdownMenu.style.display = ''
 }
 
 
@@ -178,6 +186,10 @@ youWin = function () {
     
 }
 
+function dropdownSelection () {
+    const selectedOption = dropdownMenu.value
+    sprite.src = selectedOption
+}
 
 
 feedBtn.style.display = 'none'
