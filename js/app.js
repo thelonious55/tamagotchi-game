@@ -30,6 +30,7 @@ let resultMsg = document.querySelector('#result-msg');
 let nameTag = document.querySelector('#name')
 
 let inputBox = document.querySelector('input')
+const sprite = document.querySelector('#sprite')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc);
 sleepBtn.addEventListener('click', sleepInc);
@@ -83,11 +84,13 @@ function initialize() {
     nameTag.innerHTML = document.querySelector('input').value
     document.querySelector('input').value = ''
 
+    sprite.style.display = ''
     startBtn.style.display = 'none'
     inputBox.style.display = 'none'
     feedBtn.style.display = ''
     sleepBtn.style.display = ''
     playBtn.style.display = ''
+    currentDay.style.display = ''
 }
 
 
@@ -147,6 +150,8 @@ function resetGame() {
     feedBtn.style.display = 'none'
     sleepBtn.style.display = 'none'
     playBtn.style.display = 'none'
+    currentDay.style.display = 'none'
+    sprite.style.display = 'none'
     hungerStat.innerHTML = ''
     sleepStat.innerHTML = ''
     activityStat.innerHTML = ''
@@ -163,12 +168,12 @@ stopTimers = function () {
 
 //loss message
 youLose = function () {
-    resultMsg.innerHTML = "You Lose!"
+    resultMsg.innerHTML = "You  Lose!"
 }
 
 //win message
 youWin = function () {
-    resultMsg.innerHTML = "You Win!"
+    resultMsg.innerHTML = "You  Win!"
 }
 
 
@@ -177,3 +182,4 @@ youWin = function () {
 feedBtn.style.display = 'none'
 sleepBtn.style.display = 'none'
 playBtn.style.display = 'none'
+sprite.style.display = 'none'

@@ -18,6 +18,7 @@ body {
     background-color: #b800ff;
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
+    margin: 10px;
 }
 
 #play-btn {
@@ -60,8 +61,36 @@ input {
     font-size: 50px;
     font-family: 'ArcadeClassic', sans-serif;
     color: #00d4ff;
+    float: right;
+    margin-right: 70px;
 }
 
-h3 {
+p {
     font-family: 'ArcadeClassic', sans-serif;
+    font-size: 50px;
+    color: #00d4ff;
+    float: left;
+    margin-left: 70px;
+    
 }
+
+.stats {
+    font-family: 'ArcadeClassic', sans-serif;
+    display: inline-block;
+}
+
+#sprite {
+    max-width: 20%;
+    height: auto;
+    
+}
+
+#result-msg {
+    font-family: 'ArcadeClassic', sans-serif;
+    font-size: 60px;
+}
+
+header {
+    text-align: left;
+}
+

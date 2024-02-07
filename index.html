@@ -9,16 +9,23 @@
     <link href="https://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
 </head>
 <body>
-    <h1>Tamagotchi</h1>
-    <h2 id="result-msg"></h2>
-    <h2 id="name"></h2>
+   <header>
+        <button id="reset-btn">Reset</button>
+   </header>
+        <h1>Tamagotchi</h1>
+        <h2 id="result-msg"></h2>
     <div>
-        <input type="text" placeholder="Enter name!">
+        <input type="text" placeholder="Enter  name!">
         <button id="start-btn">Start!</button>
     </div>
     
     <div class="display">
-        <h2>sprite goes here</h2>
+        <img id="sprite" src="https://i.imgur.com/w2MPnXF.png" alt="">
+        <p id="current-day"></p>
+        <h2 id="name"></h2>
+    </div>
+
+    <div class="stats">
         <h3 id="hunger"></h3>
         <h3 id="sleep"></h3>
         <h3 id="activity"></h3>
@@ -30,9 +37,8 @@
         <button id="play-btn">Play</button>
     </div>
     
-    <div>
-        <p id="current-day"></p>
-    </div>
-    <button id="reset-btn">Reset</button>
+    <aside>
+        
+    </aside>
 </body>
 </html>
