@@ -5,17 +5,13 @@ const pet = {
     activity: 100,
 }
 
-
 /*----- app's state (variables) -----*/
 let hungerDec;
 let sleepDec;
 let activityDec;
 let dayCounter;
-// let actionPoints; 
 let dayNum = 1;
-let stopTimers;
-let youLose;
-let youWin;
+
 /*----- cached element references -----*/
 let hungerStat = document.querySelector('#hunger');
 let sleepStat = document.querySelector('#sleep');
@@ -27,13 +23,9 @@ let currentDay = document.querySelector('#current-day');
 const startBtn = document.querySelector('#start-btn');
 const resetBtn = document.querySelector('#reset-btn');
 let resultMsg = document.querySelector('#result-msg');
-
-//cached empty element
-let nameTag = document.querySelector('#name')
-
-let inputBox = document.querySelector('input')
-const sprite = document.querySelector('#sprite')
-
+let nameTag = document.querySelector('#name');
+let inputBox = document.querySelector('#input');
+const sprite = document.querySelector('#sprite');
 const dropdownMenu = document.querySelector('#dropdown-menu')
 /*----- event listeners -----*/
 feedBtn.addEventListener('click', hungerInc);
@@ -54,7 +46,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 2000)
+    }, 30)
     
      sleepDec = setInterval(function () {
         pet.sleep -= 1
@@ -90,52 +82,32 @@ function initialize() {
     nameTag.innerHTML = document.querySelector('input').value
     document.querySelector('input').value = ''
 
-    sprite.style.display = ''
-    startBtn.style.display = 'none'
-    inputBox.style.display = 'none'
-    feedBtn.style.display = ''
-    sleepBtn.style.display = ''
-    playBtn.style.display = ''
-    currentDay.style.display = ''
-    dropdownMenu.style.display = 'none'
+    toggleDisplay([startBtn, inputBox, dropdownMenu], 'none')
+    toggleDisplay([sprite, feedBtn, sleepBtn, playBtn, currentDay], '')
 }
 
 
 //Increase stats
 
 function hungerInc() {
-    if (pet.hunger <= 95) {
-        pet.hunger += 5
-    } else {
-        pet.hunger = 100
-    }
+    pet.hunger <= 97 ? pet.hunger += 3 : pet.hunger = 100;
     renderStats()
 }
-
 function sleepInc() {
-    if (pet.sleep <= 90) {
-        pet.sleep += 10
-    } else {
-        pet.sleep = 100
-    }
+    pet.sleep <= 92 ? pet.sleep += 8 : pet.sleep = 100;
     renderStats()
 }
-
 function activityInc() {
-    if (pet.activity <= 93) {
-        pet.activity += 7
-    } else {
-        pet.activity = 100
-    }
+    pet.activity <= 95 ? pet.activity += 5 : pet.activity = 100;
     renderStats()
 }
-
 //Render functions
 
 function renderStats() {
     hungerStat.innerHTML = `hunger ${pet.hunger}%`
     sleepStat.innerHTML = `sleep ${pet.sleep}%`
     activityStat.innerHTML = `activity ${pet.activity}%`
+    toggleDisplay([hungerStat, sleepStat, activityStat], '')
 }
 
 function renderDay() {
@@ -151,18 +123,9 @@ function resetGame() {
     renderDay()
     renderStats()
     resultMsg.innerHTML = ''
-    startBtn.style.display = ''
-    inputBox.style.display = ''
     nameTag.innerHTML = ''
-    feedBtn.style.display = 'none'
-    sleepBtn.style.display = 'none'
-    playBtn.style.display = 'none'
-    currentDay.style.display = 'none'
-    sprite.style.display = 'none'
-    hungerStat.innerHTML = ''
-    sleepStat.innerHTML = ''
-    activityStat.innerHTML = ''
-    dropdownMenu.style.display = ''
+    toggleDisplay([startBtn, inputBox, dropdownMenu], '')
+    toggleDisplay([feedBtn, sleepBtn, playBtn, currentDay, sprite, hungerStat, sleepStat, activityStat], 'none')
 }
 
 
@@ -175,24 +138,26 @@ stopTimers = function () {
 }
 
 //loss message
-youLose = function () {
+youLose = function() {
     resultMsg.innerHTML = "You  Lose!"
-    
 }
 
 //win message
-youWin = function () {
+youWin = function() {
     resultMsg.innerHTML = "You  Win!"
-    
 }
 
-function dropdownSelection () {
+function dropdownSelection() {
     const selectedOption = dropdownMenu.value
     sprite.src = selectedOption
 }
 
-
-feedBtn.style.display = 'none'
-sleepBtn.style.display = 'none'
-playBtn.style.display = 'none'
-sprite.style.display = 'none'
+//change display value of cached elements passed through as array
+function toggleDisplay(n, displayValue) {
+    n.forEach(function(n) {
+        n.style.display = displayValue
+    })
+    
+}
+//initial display
+toggleDisplay([feedBtn, sleepBtn, playBtn, sprite], 'none')
