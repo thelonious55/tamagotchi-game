@@ -4,13 +4,14 @@ body {
     text-align: center;
 }
 
-#feed-btn {
+.button {
     border-radius: 12px;
     padding: 12px;
     background-color: #b800ff;
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
 }
+
 
 #sleep-btn {
     border-radius: 12px;
@@ -19,14 +20,6 @@ body {
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
     margin: 10px;
-}
-
-#play-btn {
-    border-radius: 12px;
-    padding: 12px;
-    background-color: #b800ff;
-    color: white;
-    font-family: 'ArcadeClassic', sans-serif;
 }
 
 h1 {
@@ -41,36 +34,29 @@ input {
     font-family: 'ArcadeClassic', sans-serif;
 }
 
-#start-btn {
-    border-radius: 12px;
-    padding: 12px;
-    background-color: #b800ff;
-    color: white;
-    font-family: 'ArcadeClassic', sans-serif;
-}
-
-#reset-btn {
-    border-radius: 12px;
-    padding: 12px;
-    background-color: #b800ff;
-    color: white;
-    font-family: 'ArcadeClassic', sans-serif;
-}
-
 #name {
     font-size: 50px;
     font-family: 'ArcadeClassic', sans-serif;
     color: #00d4ff;
     float: right;
     margin-right: 70px;
+    position: absolute;
+    top: 50px;
+    right: 70px;
+}
+.display {
+    position: relative;
 }
 
-p {
+#current-day {
     font-family: 'ArcadeClassic', sans-serif;
     font-size: 50px;
     color: #00d4ff;
     float: left;
     margin-left: 70px;
+    position: absolute;
+    top: 50px;
+    left: 70px;
     
 }
 
@@ -88,6 +74,11 @@ p {
 #result-msg {
     font-family: 'ArcadeClassic', sans-serif;
     font-size: 60px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 header {

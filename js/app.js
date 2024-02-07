@@ -49,7 +49,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 1500)
+    }, 30)
     
      sleepDec = setInterval(function () {
         pet.sleep -= 1
@@ -169,15 +169,16 @@ stopTimers = function () {
 //loss message
 youLose = function () {
     resultMsg.innerHTML = "You  Lose!"
+    
 }
 
 //win message
 youWin = function () {
     resultMsg.innerHTML = "You  Win!"
+    
 }
 
 
-//once everything is layed out, hide stats and action buttons until initialize
 
 feedBtn.style.display = 'none'
 sleepBtn.style.display = 'none'
