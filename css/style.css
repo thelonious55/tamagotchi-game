@@ -57,8 +57,17 @@ input {
     margin-left: 70px;
     position: absolute;
     top: 50px;
-    left: 70px;
+    left: 55px;
     
+}
+
+#action-points {
+    font-family: 'ArcadeClassic', sans-serif;
+    font-size: 30px;
+    color: #00d4ff;
+    position: absolute;
+    top: 130px;
+    left: 125px;
 }
 
 .stats {
