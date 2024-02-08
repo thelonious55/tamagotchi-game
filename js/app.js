@@ -46,7 +46,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 30)
+    }, 1000)
     
      sleepDec = setInterval(function () {
         pet.sleep -= 1
@@ -55,7 +55,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 8000)
+    }, 5000)
     
      activityDec = setInterval(function () {
         pet.activity -= 1
@@ -64,7 +64,7 @@ function initialize() {
             youLose()
         }
         renderStats()
-    }, 5000)
+    }, 3000)
 
      dayCounter = setInterval(function () {
         dayNum += 1
