@@ -82,7 +82,7 @@ function initialize() {
             stopTimers()
             youWin()
         }
-    }, 30000)
+    }, 15000)
 
     if (dropdownMenu.value === 'https://i.imgur.com/lwusw0B.png') {
         imageChanger = setInterval(function() {
@@ -175,8 +175,7 @@ function resetGame() {
     pet.hunger = 100
     renderDay()
     renderStats()
-    resultMsg.innerHTML = ''
-    nameTag.innerHTML = ''
+    clearHTML([resultMsg, nameTag], '')
     toggleDisplay([startBtn, inputBox, dropdownMenu], '')
     toggleDisplay([feedBtn, sleepBtn, playBtn, currentDay, sprite, hungerStat, sleepStat, activityStat, currentPoints], 'none')
 }
@@ -211,7 +210,14 @@ function toggleDisplay(n, displayValue) {
     n.forEach(function (n) {
         n.style.display = displayValue
     })
-
 }
+
+//resets html exactly like displayValue
+function clearHTML (n, value) {
+    n.forEach(function(n) {
+        n.innerHTML = value
+    })
+}
+
 //initial display
 toggleDisplay([feedBtn, sleepBtn, playBtn, sprite], 'none')
